@@ -1,4 +1,3 @@
-# signal_processing_app.py
 import tkinter as tk
 from tkinter import ttk
 import numpy as np
@@ -9,7 +8,20 @@ from signalnoise.settings_widgets import SettingsFrame
 
 
 class App:
+    """
+    Signal Processing Simulation Application.
+
+    Parameters:
+    - master (tk.Tk): The master widget (typically the main application window).
+    """
+
     def __init__(self, master):
+        """
+        Initialize the Signal Processing Application.
+
+        Parameters:
+        - master (tk.Tk): The master widget (typically the main application window).
+        """
         self.master = master
         self.master.title("Signal Processing Simulation")
 
@@ -22,8 +34,12 @@ class App:
         self.sampling_rate_var = tk.DoubleVar(value=10000.0)
 
         self.create_widgets()
+        self.simulate()
 
     def set_dark_theme(self):
+        """
+        Set the dark theme for the application.
+        """
         style = ttk.Style()
         style.theme_use("clam")  # Use the clam theme (a simple dark theme)
         style.configure("TFrame", background="#2E2E2E")
@@ -38,6 +54,9 @@ class App:
         plt.style.use("dark_background")
 
     def create_widgets(self):
+        """
+        Create and layout widgets for the Signal Processing Application.
+        """
         # Input Settings Frame
         input_frame = SettingsFrame(self.master, self)
         input_frame.grid(row=0, column=0, padx=10, pady=10, sticky="n")
@@ -53,6 +72,9 @@ class App:
         self.canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
 
     def simulate(self):
+        """
+        Simulate signal processing based on user input.
+        """
         duration = self.duration_var.get()
         sampling_rate = self.sampling_rate_var.get()
         time = np.linspace(0, duration, int(
@@ -74,6 +96,15 @@ class App:
         self.visualize_results(time, original, noisy, filtered)
 
     def visualize_results(self, time, original, noisy, filtered):
+        """
+        Visualize the results of signal processing.
+
+        Parameters:
+        - time (numpy.ndarray): Time values for the signals.
+        - original (numpy.ndarray): Original signal.
+        - noisy (numpy.ndarray): Noisy signal.
+        - filtered (numpy.ndarray): Filtered signal.
+        """
         self.ax[0].clear()
         self.ax[0].plot(time, original, label="Original Signal")
         self.ax[0].set_title("Original Signal")
