@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name='signalnoise',
     version='0.1.0',
-    description='Building',
+    description='A TK GUI that allows the user to simulate noise filtering for signals',
     url='https://github.com/klinefelters/SignalNoise',
     author='Steven Klinefelter',
     author_email='klinefelters@etown.edu',
@@ -18,6 +18,9 @@ setup(
 
     classifiers=[
         'Development Status :: 1 - Planning',
-        'Programming Language :: Python :: 3.11.6',
+        'Programming Language :: Python :: 3.11.x',
+        'Programming Language :: Python :: 3.10.x',
+        'Programming Language :: Python :: 3.9.x',
+        'Programming Language :: Python :: 3.8.x',
     ],
 )
