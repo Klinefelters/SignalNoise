@@ -17,7 +17,7 @@ setup(
     ],
 
     classifiers=[
-        'Development Status :: 1 - Planning',
+        'Development Status :: 1 - Testing',
         'Programming Language :: Python :: 3.11.x',
         'Programming Language :: Python :: 3.10.x',
         'Programming Language :: Python :: 3.9.x',

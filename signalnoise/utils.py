@@ -67,16 +67,32 @@ def add_noise(signal_wave, noise_type, noise_intensity):
     return signal_wave + noise
 
 
-def apply_filter(input_signal):
+def apply_filter(input_signal, filter_type, filter_pass):
     """
-    Apply a low-pass Butterworth filter to the input signal.
+    Apply a filter to the input signal based on the specified filter type.
 
     Parameters:
     - input_signal (array-like): The input signal to be filtered.
+    - filter_type (str): The type of filter to be applied.
+    - filter_pass (str): The type of filter pass to be applied.
 
     Returns:
     numpy.ndarray: Filtered signal.
     """
+    order = 4  # You can adjust the filter order as needed
+    cutoff = 0.1  # You can adjust the cutoff frequency as needed
 
-    b, a = signal.butter(4, 0.1, btype='low', analog=False)
+    if filter_type == "butterworth":
+        b, a = signal.butter(order, cutoff, btype=filter_pass, analog=False)
+    elif filter_type == "bessel":
+        b, a = signal.bessel(order, cutoff, btype=filter_pass, analog=False)
+    elif filter_type == "firwin":
+
+        b = signal.firwin(order + 1, cutoff, fs=2.0,
+                          pass_zero=filter_pass, window='hamming')
+        a = 1.0
+    else:
+        raise ValueError("Invalid filter type")
+
+    # Apply the filter to the input signal
     return signal.filtfilt(b, a, input_signal)

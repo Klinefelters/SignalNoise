@@ -30,8 +30,11 @@ class App:
 
         self.noise_intensity_var = tk.DoubleVar(value=0.2)
         self.noise_type_var = tk.StringVar(value="gaussian")
-        self.duration_var = tk.DoubleVar(value=10.0)
-        self.sampling_rate_var = tk.DoubleVar(value=10000.0)
+        self.filter_type_var = tk.StringVar(value="butterworth")
+        self.filter_pass_var = tk.StringVar(value="low")
+        self.duration_var = tk.DoubleVar(value=1)
+        self.sampling_rate_var = tk.DoubleVar(value=1000)
+        self.signal_noise_label = tk.StringVar(value="")
 
         self.create_widgets()
         self.simulate()
@@ -91,7 +94,15 @@ class App:
         noisy = add_noise(original, self.noise_type_var.get(),
                           self.noise_intensity_var.get())
 
-        filtered = apply_filter(noisy)
+        filtered = apply_filter(
+            noisy, self.filter_type_var.get(), self.filter_pass_var.get())
+        signal_power = np.mean(original**2)
+
+        noise_power = np.mean((filtered - original)**2)
+
+        snr_db = 10 * np.log10(signal_power / noise_power)
+
+        self.signal_noise_label.set(f"{snr_db} db")
 
         self.visualize_results(time, original, noisy, filtered)
 

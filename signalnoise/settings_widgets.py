@@ -75,7 +75,25 @@ class SettingsFrame(ttk.Frame):
             self, textvariable=self.app.noise_type_var, values=["gaussian", "impulse", "random"])
         self.app.noise_type_combobox.grid(row=6, column=1)
 
+        # Filter Type
+        ttk.Label(self, text="Filter Type:").grid(row=7, column=0, sticky="w")
+        self.app.filter_type_combobox = ttk.Combobox(
+            self, textvariable=self.app.filter_type_var, values=["butterworth", "bessel", "firwin"])
+        self.app.filter_type_combobox.grid(row=7, column=1)
+
+        # Filter Type
+        ttk.Label(self, text="Filter Pass:").grid(row=8, column=0, sticky="w")
+        self.app.filter_pass_combobox = ttk.Combobox(
+            self, textvariable=self.app.filter_pass_var, values=["lowpass", "highpass"])
+        self.app.filter_pass_combobox.grid(row=8, column=1)
+
         # Simulate Button
         simulate_button = ttk.Button(
             self, text="Simulate", command=self.app.simulate)
-        simulate_button.grid(row=7, column=0, columnspan=2, pady=10)
+        simulate_button.grid(row=9, column=0, columnspan=2, pady=10)
+
+        # Signal to noise Ratio
+        ttk.Label(self, text="Signal Noise Ratio:").grid(
+            row=10, column=0, sticky="w")
+        ttk.Label(self, textvariable=self.app.signal_noise_label).grid(
+            row=10, column=1, sticky="w")
