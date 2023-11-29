@@ -9,7 +9,3 @@ The program uses the compact fourier series and allows the user to input a list 
 
 # Noise Types
 The program has 3 options for noise: gausian, impulse, and random. It also allows the user to control the noise intensity.
-
-# TODO
-- Add more filter types
-- Make signal creation easier
