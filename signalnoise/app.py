@@ -31,7 +31,7 @@ class App:
         self.noise_intensity_var = tk.DoubleVar(value=0.2)
         self.noise_type_var = tk.StringVar(value="gaussian")
         self.filter_type_var = tk.StringVar(value="butterworth")
-        self.filter_pass_var = tk.StringVar(value="low")
+        self.filter_pass_var = tk.StringVar(value="lowpass")
         self.duration_var = tk.DoubleVar(value=1)
         self.sampling_rate_var = tk.DoubleVar(value=1000)
         self.signal_noise_label = tk.StringVar(value="")
