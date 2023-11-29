@@ -93,7 +93,13 @@ class SettingsFrame(ttk.Frame):
         simulate_button.grid(row=9, column=0, columnspan=2, pady=10)
 
         # Signal to noise Ratio
-        ttk.Label(self, text="Signal Noise Ratio:").grid(
+        ttk.Label(self, text="Noisy Noise Ratio:").grid(
             row=10, column=0, sticky="w")
-        ttk.Label(self, textvariable=self.app.signal_noise_label).grid(
+        ttk.Label(self, textvariable=self.app.noisey_noise_label).grid(
             row=10, column=1, sticky="w")
+
+        # Signal to noise Ratio
+        ttk.Label(self, text="Filtered Noise Ratio:").grid(
+            row=11, column=0, sticky="w")
+        ttk.Label(self, textvariable=self.app.signal_noise_label).grid(
+            row=11, column=1, sticky="w")

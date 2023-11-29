@@ -36,7 +36,7 @@ def generate_fourier_series(time, frequencies, amplitudes, phases):
     signal_wave = np.zeros_like(time)
 
     for freq, amp, phase in zip(frequencies, amplitudes, phases):
-        signal_wave += amp * np.sin(2 * np.pi * freq * time + phase)
+        signal_wave += amp * np.cos(2 * np.pi * freq * time + phase)
 
     return signal_wave
 
