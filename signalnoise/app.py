@@ -36,9 +36,17 @@ class App:
         self.sampling_rate_var = tk.DoubleVar(value=1000)
         self.signal_noise_label = tk.StringVar(value="")
         self.noisey_noise_label = tk.StringVar(value="")
+        self.master.protocol("WM_DELETE_WINDOW", self.on_close)
 
         self.create_widgets()
         self.simulate()
+        
+    def on_close(self):
+        """
+        This method will be called when the window is closed.
+        """
+        self.master.quit()  # End the main event loop
+        self.master.destroy()  # Destroy the window
 
     def set_dark_theme(self):
         """
